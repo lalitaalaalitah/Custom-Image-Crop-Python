@@ -10,9 +10,13 @@ import os
 def crop(imgFile, lnX, lnY, exportPath):
     imgSource = Image.open(imgFile)  # Open the image source
 
-    for i in range(3):  # Loop for rows
+    for i in range(3):  # Loop for rows 
+        #To split vertically in halves use range(1)
         for j in range(3):  # Loop for cols
+            #To split vertically in halves use range(2)
             imgHeight = lnY[i + 1] - lnY[i]  # Define the height of specific crop
+            #To split vertically in halves keep it constant, i.e. equal to half(considering we are splitting vertically) like 
+            #imgHeight = 1700
             imgWidth = lnX[j + 1] - lnX[j]  # Define the width of specific crop
 
             # Set crop bounds [aka box] (LeftEdgeX, TopEdgeY,RightEdgeX, BottomEdgeY)
@@ -42,17 +46,30 @@ if __name__ == '__main__':
     exportPath = '\Exported-Folder'
 
     lnX1 = 0
-    lnX2 = 100
-    lnX3 = 200
+    lnX2 = 1080
+    lnX3 = 2160
     lnX4 = 300
+    #To split vertically in halves
+#     lnX1 = 0#keep it 0
+#     lnX2 = 1080#change it to half of width
+#     lnX3 = 2160#change it to total width
 
+    
     lnY1 = 0
     lnY2 = 100
     lnY3 = 200
     lnY4 = 300
+    ##To split vertically in halves
+#     lnY1 = 0#keep it 0
+#     lnY2 = 1700#change it to height of image
+
     # ----------------------------------------
 
     lnX = [lnX1, lnX2, lnX3, lnX4]
+    #To split vertically in halves
+#     lnX = [lnX1, lnX2, lnX3]
     lnY = [lnY1, lnY2, lnY3, lnY4]
+    #To split vertically in halves
+#     lnY = [lnY1, lnY2]
 
     crop(imgFile, lnX, lnY, exportPath)
